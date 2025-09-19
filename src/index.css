@@ -1,38 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Ensure proper centering and prevent scrolling issues */
-html, body {
-  height: 100%;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-}
-
-#root {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Mobile-specific centering */
-@media (max-width: 768px) {
-  html, body {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-  }
-  
-  #root {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-}

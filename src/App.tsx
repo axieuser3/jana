@@ -1,61 +1,9 @@
 import React, { useState } from 'react';
-import { useEffect } from 'react';
 import { Mail } from 'lucide-react';
 
 function App() {
   const [isOpened, setIsOpened] = useState(false);
 
-  // Auto-center and scroll to center on mount and resize
-  useEffect(() => {
-    const centerView = () => {
-      // Scroll to center of viewport
-      window.scrollTo({
-        top: window.innerHeight / 2 - 300,
-        left: window.innerWidth / 2 - 160,
-        behavior: 'smooth'
-      });
-      
-      // For mobile, ensure we're at the top-center
-      if (window.innerWidth <= 768) {
-        window.scrollTo({
-          top: 0,
-          left: 0,
-          behavior: 'smooth'
-        });
-      }
-    };
-
-    // Center on load
-    centerView();
-    
-    // Center on resize
-    window.addEventListener('resize', centerView);
-    
-    // Center on orientation change (mobile)
-    window.addEventListener('orientationchange', () => {
-      setTimeout(centerView, 100);
-    });
-
-    return () => {
-      window.removeEventListener('resize', centerView);
-      window.removeEventListener('orientationchange', centerView);
-    };
-  }, []);
-
-  // Auto-center when opening/closing the gift
-  useEffect(() => {
-    const centerView = () => {
-      if (window.innerWidth <= 768) {
-        window.scrollTo({
-          top: 0,
-          left: 0,
-          behavior: 'smooth'
-        });
-      }
-    };
-    
-    centerView();
-  }, [isOpened]);
   const openEnvelope = () => {
     setIsOpened(true);
   };
@@ -66,11 +14,11 @@ function App() {
 
   if (isOpened) {
     return (
-      <div className="min-h-screen w-full bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 flex items-center justify-center p-2 overflow-hidden">
+      <div className="min-h-screen bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 flex items-center justify-center p-2">
         {/* Mobile-First Phone Frame */}
-        <div className="relative mx-auto">
+        <div className="relative">
           {/* Phone Outer Frame - Mobile Optimized */}
-          <div className="w-80 h-[600px] md:w-96 md:h-[680px] lg:w-[420px] lg:h-[800px] bg-gradient-to-b from-gray-800 to-gray-900 rounded-[2rem] md:rounded-[2.5rem] lg:rounded-[3rem] p-1 md:p-1.5 lg:p-2 shadow-2xl mx-auto">
+          <div className="w-80 h-[600px] md:w-96 md:h-[680px] lg:w-[420px] lg:h-[800px] bg-gradient-to-b from-gray-800 to-gray-900 rounded-[2rem] md:rounded-[2.5rem] lg:rounded-[3rem] p-1 md:p-1.5 lg:p-2 shadow-2xl">
             {/* Phone Inner Frame */}
             <div className="w-full h-full bg-black rounded-[1.5rem] md:rounded-[2rem] lg:rounded-[2.5rem] p-0.5">
               {/* Phone Screen */}
@@ -338,11 +286,11 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen w-full bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 flex items-center justify-center p-2 overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 flex items-center justify-center p-2">
       {/* Phone Frame - Mobile First Responsive */}
-      <div className="relative mx-auto">
+      <div className="relative">
         {/* Phone Outer Frame - Mobile Optimized */}
-        <div className="w-80 h-[600px] md:w-96 md:h-[680px] lg:w-[420px] lg:h-[800px] bg-gradient-to-b from-gray-800 to-gray-900 rounded-[2rem] md:rounded-[2.5rem] lg:rounded-[3rem] p-1 md:p-1.5 lg:p-2 shadow-2xl mx-auto">
+        <div className="w-80 h-[600px] md:w-96 md:h-[680px] lg:w-[420px] lg:h-[800px] bg-gradient-to-b from-gray-800 to-gray-900 rounded-[2rem] md:rounded-[2.5rem] lg:rounded-[3rem] p-1 md:p-1.5 lg:p-2 shadow-2xl">
           {/* Phone Inner Frame */}
           <div className="w-full h-full bg-black rounded-[1.5rem] md:rounded-[2rem] lg:rounded-[2.5rem] p-0.5">
             {/* Phone Screen */}

@@ -5,8 +5,28 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="alternate icon" href="/favicon.ico" />
     <meta name="theme-color" content="#dc2626" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
     <title>🌹 Jana Elhelwany - Romantic Gift</title>
+    <style>
+      /* Prevent any scrolling or zooming on mobile */
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+        position: fixed;
+        width: 100%;
+      }
+      
+      /* Loading state centering */
+      #root {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        width: 100vw;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>

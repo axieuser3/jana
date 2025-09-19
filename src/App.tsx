@@ -1,8 +1,65 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 import { Mail } from 'lucide-react';
 
 function App() {
   const [isOpened, setIsOpened] = useState(false);
+
+  // Auto-center and redirect user to center on load
+  useEffect(() => {
+    const centerPage = () => {
+      // Scroll to center of page
+      window.scrollTo({
+        top: window.innerHeight / 2 - 400,
+        left: window.innerWidth / 2 - 200,
+        behavior: 'smooth'
+      });
+      
+      // For mobile devices, ensure proper centering
+      if (window.innerWidth <= 768) {
+        setTimeout(() => {
+          window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+          });
+        }, 100);
+      }
+    };
+
+    // Center immediately on load
+    centerPage();
+
+    // Re-center on window resize or orientation change
+    const handleResize = () => {
+      setTimeout(centerPage, 100);
+    };
+
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('orientationchange', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('orientationchange', handleResize);
+    };
+  }, []);
+
+  // Re-center when opening/closing gift
+  useEffect(() => {
+    const centerAfterStateChange = () => {
+      setTimeout(() => {
+        if (window.innerWidth <= 768) {
+          window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+          });
+        }
+      }, 200);
+    };
+    
+    centerAfterStateChange();
+  }, [isOpened]);
 
   const openEnvelope = () => {
     setIsOpened(true);
